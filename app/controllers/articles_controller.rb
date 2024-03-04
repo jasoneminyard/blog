@@ -2,6 +2,12 @@ class ArticlesController < ApplicationController
 
   def index
     @articles = Article.all
+    @count = Article.public_count
+    if @count ==1
+      @article = "article"
+    else
+      @article = "articles"
+    end
   end
 
   def show
