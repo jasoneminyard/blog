@@ -18,7 +18,7 @@
   <div class="blog-button-container">
     <div>
       <%= form.label :status %><br>
-      <%= form.select(:status, Visible::VALID_STATUSES, { :class => "form-select form-select-sm", selected: article.status || "public"}) %>
+      <%= form.select(:status, Visible::VALID_STATUSES, { :class => "form-select form-select-lg", selected: article.status || "public" }) %>
     </div>
 
 
