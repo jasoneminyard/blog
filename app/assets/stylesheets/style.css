@@ -14,6 +14,22 @@ a:hover {
   background-color: rgb(255, 255, 255);
 }
 
+.blog-btn-group-vertical {
+  flex-direction: column;
+  display: flex;
+  justify-content: space-around;
+}
+
+.blog-button-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.blog-form-btn {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
 .blog-header {
   border-bottom: 1px solid #e5e5e5;
 }
@@ -95,7 +111,3 @@ h1, h2, h3, h4, h5, h6 {
   color: blue;
 }
 
-.blog-button-container {
-  display: flex;
-  justify-content: space-between;
-}

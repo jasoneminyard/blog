@@ -8,18 +8,18 @@
     <%= form.text_area :body %>
   </p>
 
-  <div class="blog-button-container">
+  <div class="blog-btn-group-vertical">
     <div>
       <%= form.label :status %><br>
       <%= form.select :status, Visible::VALID_STATUSES, { :class => "form-select form-select-sm", selected: 'public'} %>
     </div>
 
     <div>
-      <%= form.submit(class: "btn btn-primary") %>
+      <%= form.submit(class: "btn btn-primary blog-form-btn ") %>
     </div>
 
     <div>
-      <%= link_to "Cancel", articles_path %>
+      <%= link_to "Cancel", articles_path, class: "link-danger" %>
     </div>
   </div>
 <% end %>
