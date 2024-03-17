@@ -1,5 +1,19 @@
 /* stylelint-disable selector-list-comma-newline-after */
 
+/* a:link is set to white in bootstrap so we overwrite it here or Edit will be invisible on a white background */
+a:link {                  
+  color: var(--bs-link-color);
+}
+
+/* add hover color for edit due to overriding bootstrap */
+a:hover {
+  color: var(--bs-link-hover-color);
+}
+
+.blog-body {
+  background-color: rgb(255, 255, 255);
+}
+
 .blog-header {
   border-bottom: 1px solid #e5e5e5;
 }
@@ -13,8 +27,8 @@
   text-decoration: none;
 }
 
-.blog-body {
-  background-color: rgb(255, 255, 255);
+.blog-new-object-label {
+  color: black;
 }
 
 h1, h2, h3, h4, h5, h6 {
