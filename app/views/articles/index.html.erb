@@ -4,7 +4,7 @@
 <ol class="list-group">
   <% @articles.each do |article| %>
     <% unless article.archived? %>
-      <li class=”list-group-item list-group-item-action ”>
+      <li class=”list-group-item list-group-item-action”>
         <%= link_to article.title, article %>
         <% comment_comments = (article.comments.count == 1 ? "comment" : "comments") %>
         <span class="badge bg-primary rounded-pill"><%= article.comments.count %> <%= comment_comments %></span>
