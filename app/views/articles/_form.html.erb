@@ -15,18 +15,20 @@
     <% end %>
   </div>
 
-  <div>
-     <%= form.label :status %><br>
-    <%= form.select :status, Visible::VALID_STATUSES, selected: article.status || 'public' %>
-  </div>
+  <div class="blog-btn-group-vertical">
+    <div>
+      <%= form.label :status %><br>
+      <%= form.select(:status, Visible::VALID_STATUSES, { :class => "form-select form-select-lg", selected: article.status || "public" }) %>
+    </div>
 
 
-  <div>
-    <%= form.submit %>
-  </div>
+    <div>
+      <%= form.submit(class: "btn btn-primary blog-form-btn") %>
+    </div>
 
-  <div>
-    <%= link_to "Cancel", articles_path %>
+    <div>
+      <%= link_to "Cancel", articles_path, class: "link-danger" %>
+    </div>
   </div>
 <% end %>
 
