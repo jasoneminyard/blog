@@ -1,7 +1,12 @@
 class ArticlesController < ApplicationController
-
   def index
     @articles = Article.all
+    @count = Article.public_count
+    if @count ==1
+      @article = "article"
+    else
+      @article = "articles"
+    end
   end
 
   def show
@@ -45,6 +50,6 @@ class ArticlesController < ApplicationController
 
     private
       def article_params
-        params.require(:article).permit(:title, :body, :status)
+        params.require(:article).permit(:title, :body, :status, :author)
       end
 end

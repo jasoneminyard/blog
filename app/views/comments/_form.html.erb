@@ -1,20 +1,27 @@
 <%= form_with model: [ @article, @article.comments.build ] do |form| %>
   <p>
     <%= form.label :commenter %><br>
-    <%= form.text_field :commenter %>
+    <%= form.text_field :commenter, value: current_user.username, hidden: true %>
+    <%= current_user.username %>
   </p>
   <p>
     <%= form.label :body %><br>
     <%= form.text_area :body %>
   </p>
 
-  <p>
-    <%= form.label :status %><br>
-    <%= form.select :status, Visible::VALID_STATUSES, selected: 'public' %>
-  </p>
-  
-  <p>
-    <%= form.submit %>
-  </p>
+  <div class="blog-btn-group-vertical">
+    <div>
+      <%= form.label :status %><br>
+      <%= form.select :status, Visible::VALID_STATUSES, { :class => "form-select form-select-sm", selected: 'public'} %>
+    </div>
+
+    <div>
+      <%= form.submit(class: "btn btn-primary blog-form-btn ") %>
+    </div>
+
+    <div>
+      <%= link_to "Cancel", articles_path, class: "link-danger" %>
+    </div>
+  </div>
 <% end %>
 

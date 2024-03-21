@@ -1,14 +1,19 @@
-<h1><%= @article.title %></h1>
-
-<p><%= @article.body %></p>
-
+<div class="blog-post-title">
+  <h1><%= @article.title %></h1>
+</div>
+<div class="blog-post">
+  <p><%= @article.body %></p>
+</div>
+<div>
+  Author
+  <h6><%= @article.author %></h6>
+</div>
 <ul>
-  <li><%= link_to "Edit", edit_article_path(@article) %></li>
-  <li><%= link_to "Destroy", article_path(@article), data: {
+  <li><%= link_to "Edit Post", edit_article_path(@article) %></li>
+  <li><%= link_to "Delete Post", article_path(@article), data: {
             turbo_method: :delete,
             turbo_confirm: "Are you sure?"
-          } %></li>
-  <li><%= link_to "Articles", articles_path %>        
+          }, class: "link-danger" %></li>
 </ul>
 
 <h2>Comments</h2>
