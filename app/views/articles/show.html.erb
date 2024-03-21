@@ -4,6 +4,10 @@
 <div class="blog-post">
   <p><%= @article.body %></p>
 </div>
+<div>
+  Author
+  <h6><%= @article.author %></h6>
+</div>
 <ul>
   <li><%= link_to "Edit Post", edit_article_path(@article) %></li>
   <li><%= link_to "Delete Post", article_path(@article), data: {
