@@ -11,9 +11,9 @@ Things you may want to cover:
 
 * Configuration
 
-* Database creation - bundle e rails db:setup
+* Database creation - rails db:setup
 
-* Database initialization - bundle e rails db:migrate
+* Database initialization - rails db:migrate
 
 * How to run the test suite - rails test
 
