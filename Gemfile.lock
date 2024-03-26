@@ -231,6 +231,7 @@ GEM
 
 PLATFORMS
   x86_64-linux
+  ruby
 
 DEPENDENCIES
   bootsnap
