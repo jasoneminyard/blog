@@ -37,3 +37,6 @@ db/*.sqlite3
 
 # Ignore code coverage files
 /coverage
+
+# ignore ENVs
+/config/environment_variables.rb
