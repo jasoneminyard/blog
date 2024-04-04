@@ -1,6 +1,8 @@
+<% unless user_signed_in? %>
+  <%= render "welcome" %>
+<% end %>
 <h1>Articles</h1>
 <h5>Our blog has <%= @count %> public <%= @count == 1 ? "article" : "articles" %> and counting!</h5>
-
 <ol class="list-group">
   <% @articles.each do |article| %>
     <% unless article.archived? %>
