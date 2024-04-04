@@ -20,12 +20,9 @@
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <% if user_signed_in? %>
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item"> <%= link_to "Articles", articles_path, class: "nav-link" %> </li>
-            </ul>
-          <% else %>
-          <% end %>
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item"> <%= link_to "Articles", articles_path, class: "nav-link" %> </li>
+          </ul>
         </div>
         <p class="navbar-text float-right">
           <% if user_signed_in? %>

@@ -11,6 +11,8 @@
       </li>
     <% end %>
   <% end %>
+</ol>
 
-<%= link_to "New Article", new_article_path, class: "blog-new-object-label" %>
-
+<% if user_signed_in? %>
+  <%= link_to "New Article", new_article_path, class: "blog-new-object-label" %>
+<% end %>
