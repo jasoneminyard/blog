@@ -47,4 +47,20 @@ class ArticlesControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
     assert_match "New Article", @response.body
   end
+
+  test "#create should create article" do
+  puts Article.count
+    assert_difference("Article.count") do
+      post articles_url, params: { article: 
+                                          { title: "Some title", 
+                                            body: "one, two, three, four, five, six, seven, eight, nine", 
+                                            status: "public" } }
+    end
+    puts @response.errors
+  
+    assert_redirected_to article_path(Article.last)
+    puts Article.count
+    assert_equal "Article was successfully created.", flash[:notice]
+  end
+  
 end
