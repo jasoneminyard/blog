@@ -1,9 +1,12 @@
 require "test_helper"
 
 class ArticlesControllerTest < ActionDispatch::IntegrationTest
-  # test "the truth" do
-  #   assert true
-  # end
+  # called after every single test
+  teardown do
+    # when controller is using cache it may be a good idea to reset it afterwards
+    Rails.cache.clear
+  end
+
   test "index if @count == 1" do
     get articles_url
     assert_response :success
@@ -17,7 +20,31 @@ class ArticlesControllerTest < ActionDispatch::IntegrationTest
     assert_match "article", @response.body
   end
 
-  test "#show article"
-    
+  test "#show should show article" do
+    article = articles(:one)
+    get article_url(article)
+    assert_response :success
+  end
+
+  test "#new should redirect when not signed in" do
+    get new_article_url
+    assert_response :redirect
+  end
+  
+  test "#new should show form when user signed in" do
+    get "/users/sign_up"
+    assert_response :success
+
+    post "/users", params: { "user"=>{"email"=>"test_guy_1@yahoo.com", "username"=>"Test Guy One",
+        "password"=>"123456", "password_confirmation"=>"123456", "commit"=>"Sign up" } }
+
+    assert_response :redirect
+    follow_redirect!
+    assert_response :success
+    assert User.last.username == "Test Guy One" 
+
+    get new_article_url
+    assert_response :success
+    assert_match "New Article", @response.body
   end
 end
