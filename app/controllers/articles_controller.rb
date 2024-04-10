@@ -1,4 +1,6 @@
 class ArticlesController < ApplicationController
+  skip_before_action :authenticate_user!, only: [:index, :show]
+
   def index
     @articles = Article.all
     @count = Article.public_count
@@ -21,6 +23,7 @@ class ArticlesController < ApplicationController
     @article = Article.new(article_params)
 
     if @article.save
+      flash[:notice] = "Article was successfully created."
       redirect_to @article
     else
       render :new, status: :unprocessable_entity
