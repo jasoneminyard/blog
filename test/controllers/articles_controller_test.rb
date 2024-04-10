@@ -10,8 +10,8 @@ class ArticlesControllerTest < ActionDispatch::IntegrationTest
   test "index if @count == 1" do
     get articles_url
     assert_response :success
-    Article.last.destroy #i need only one Article to go down the correct path
-    assert Article.count == 1
+    Article.destroy_all #i need one Article to go down the correct path so destroy all
+    assert Article.count == 0
     article = Article.new title: "test one", body: "Now is the time for all good men to come to the aid of their country.", status: 'public', author: "Billy Bob"
     assert article.save
     get '/articles'
