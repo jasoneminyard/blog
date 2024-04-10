@@ -72,5 +72,14 @@ class ArticlesControllerTest < ActionDispatch::IntegrationTest
     assert_equal "updated", article.title
   end
   
+  test "should destroy article" do
+    article = articles(:one)
+    sign_up_and_login
+    assert_difference("Article.count", -1) do
+      delete article_url(article)
+    end
+  
+    assert_redirected_to root_path
+  end
   
 end
