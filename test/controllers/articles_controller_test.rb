@@ -60,5 +60,17 @@ class ArticlesControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to article_path(Article.last)
     assert_equal "Article was successfully created.", flash[:notice]
   end
+
+  test "should update article" do
+    article = articles(:one)
+    sign_up_and_login
+    patch article_url(article), params: { article: { title: "updated" } }
+  
+    assert_redirected_to article_path(article)
+    # Reload association to fetch updated data and assert that title is updated.
+    article.reload
+    assert_equal "updated", article.title
+  end
+  
   
 end
