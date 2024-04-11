@@ -1,6 +1,8 @@
 require "test_helper"
 
 class ArticlesControllerTest < ActionDispatch::IntegrationTest
+  include Devise::Test::IntegrationHelpers
+
   # called after every single test
   teardown do
     # when controller is using cache it may be a good idea to reset it afterwards
@@ -12,7 +14,11 @@ class ArticlesControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
     Article.destroy_all #i need one Article to go down the correct path so destroy all
     assert Article.count == 0
-    article = Article.new title: "test one", body: "Now is the time for all good men to come to the aid of their country.", status: 'public', author: "Billy Bob"
+    article = Article.new title: "test one", 
+                          body: "Now is the time for all good men to come to the aid of their country.", 
+                          status: 'public', 
+                          author: "Billy Bob",
+                          user: users(:admin)
     assert article.save
     get '/articles'
     assert_response :success
@@ -49,12 +55,14 @@ class ArticlesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "#create should create article" do
-    sign_up_and_login
+    sign_in(users(:admin))
     assert_difference("Article.count") do
       post articles_url, params: { article: 
                                           { title: "Some title", 
                                             body: "one, two, three, four, five, six, seven, eight, nine", 
-                                            status: "public" } }
+                                            status: "public",
+                                            author: "junior",
+                                            user_id: users(:admin).id } }
     end
     
     assert_redirected_to article_path(Article.last)
@@ -63,9 +71,8 @@ class ArticlesControllerTest < ActionDispatch::IntegrationTest
 
   test "should update article" do
     article = articles(:one)
-    sign_up_and_login
+    sign_in(users(:admin))
     patch article_url(article), params: { article: { title: "updated" } }
-  
     assert_redirected_to article_path(article)
     # Reload association to fetch updated data and assert that title is updated.
     article.reload
@@ -74,7 +81,7 @@ class ArticlesControllerTest < ActionDispatch::IntegrationTest
   
   test "should destroy article" do
     article = articles(:one)
-    sign_up_and_login
+    sign_in(users(:admin))
     assert_difference("Article.count", -1) do
       delete article_url(article)
     end

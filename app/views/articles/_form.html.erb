@@ -21,11 +21,16 @@
       <%= form.select(:status, Visible::VALID_STATUSES, { :class => "form-select form-select-lg", selected: article.status || "public" }) %>
     </div>
 
-  <div>
-    <%= form.label :author %><br>
-    <%= form.text_field :author, value: current_user.username, hidden: true %>
-    <%= current_user.username %>
-  </div>
+    <div>
+      <%= form.label :author %><br>
+      <%= form.text_field :author, value: current_user.username, hidden: true %>
+      <%= current_user.username %>
+    </div>
+
+    <div>
+      <%= form.hidden_field :user_id, value: current_user.id %>
+    </div>
+    # add user_id to form
 
     <div>
       <%= form.submit(class: "btn btn-primary blog-form-btn") %>

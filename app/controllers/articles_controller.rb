@@ -36,10 +36,10 @@ class ArticlesController < ApplicationController
 
   def update
     @article = Article.find(params[:id])
-
     if @article.update(article_params)
       redirect_to @article
     else
+      puts @article.errors.full_messages
       render :edit, status: :unprocessable_entity
     end
   end
@@ -53,6 +53,6 @@ class ArticlesController < ApplicationController
 
     private
       def article_params
-        params.require(:article).permit(:title, :body, :status, :author)
+        params.require(:article).permit(:title, :body, :status, :author, :user_id)
       end
 end
