@@ -15,6 +15,6 @@
   <% end %>
 </ol>
 
-<% if user_signed_in? %>
+<% if user_signed_in? && current_user.admin? %>
   <%= link_to "New Article", new_article_path, class: "blog-new-object-label" %>
 <% end %>
