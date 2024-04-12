@@ -7,6 +7,7 @@
 one:
   email: "test_guy_one@yahoo.com"
   username: "Test Guy One"
+  admin: 0
 
 admin:
   email: "admin_guy@yahoo.com"

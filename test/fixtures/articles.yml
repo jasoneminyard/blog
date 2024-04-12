@@ -11,3 +11,15 @@ two:
   body: MyText two
   status: public
   user: admin
+
+private:
+  title: Private
+  body: This article is private and can only be viewed by admin.
+  status: private
+  user: admin
+
+archived:
+  title: Archived
+  body: This article has been archived and can only be viewed by admin.
+  status: archived
+  user: admin 

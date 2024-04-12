@@ -1,8 +1,9 @@
 class ArticlesController < ApplicationController
+  load_and_authorize_resource
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
-    @articles = Article.all
+    #@articles = Article.all
     @count = Article.public_count
     if @count ==1
       @article = "article"

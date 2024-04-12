@@ -29,14 +29,14 @@ class Ability
     # See the wiki for details:
     # https://github.com/CanCanCommunity/cancancan/blob/develop/docs/define_check_abilities.md
 
-    can :read, Article, public: true
+    can :read, Article, status: "public"
 
-    can :read, Comment, public: true
+    can :read, Comment, status: "public" #write test for this line
     
-    return unless user.present?  # additional permissions for logged in users (they can read their own posts)
-    can [:create, :update, :destroy]:create, Comment, user: user
+    #return unless user.present?  # additional permissions for logged in users (they can read their own posts)
+    #can [:create, :update, :destroy], Comment, user: user
 
-    return unless user.admin?
+    return unless user && user.admin?
     can :manage, :all
   end
 end
