@@ -6,31 +6,33 @@ class CommentsControllerTest < ActionDispatch::IntegrationTest
   #   assert true
   # end
 
+
+  #was the web request successful?
+  #was the user redirected to the right page?
+  #was the user successfully authenticated?
+  #was the appropriate message displayed to the user in the view?
+  #was the correct information displayed in the response?
+
   #create
   
   test "signed in users can #create comments" do
-    user = users(:admin)
-    #article = articles(:one)
-    
-    article = Article.new title: "test one", 
-                          body: "Now is the time for all good men to come to the aid of their country.", 
-                          status: 'public', 
-                          author: "Billy Bob",
-                          user: user
-    assert article.save
+    user = users(:one)
+    article = articles(:one)
     assert sign_in(user)
-    get articles_path
-    get article_path(article)
-    assert_difference(article.comments.count.to_s) do
-      post article_comments_path(article), params: { comment:
-                                  { commenter: "Joe Blow",
-                                    body: "This article is interesting!",
-                                    status: "public",
-                                    user_id: user.id
-                                  } }
-    end
 
-    #assert_redirected_to article_comments_path(article)
-    #assert_equal "Comment was successfully created.", flash[:notice]
+    assert_difference("Comment.count") do
+      post article_comments_path(article), params: { 
+        comment:
+          { commenter: user.username,
+            body: "This article is interesting!",
+            status: "public",
+            user_id: user.id
+          } }
+    end
+    
+    assert_response :found
+    assert_redirected_to article_path(article)
+    assert_equal "Comment was successfully created.", flash[:notice]
   end
+
 end

@@ -34,8 +34,8 @@ class Ability
     can :read, Comment, status: "public" #write test for this line
     
     return unless user.present?  # additional permissions for logged in users (they can read their own posts)
-    can :destroy, Comment, user: user
-    #can [:create, :update, :destroy], Article, user: user //only admin can create, update, or destroy articles
+    can [:create, :destroy], Comment, user: user
+    #can :create, Article, user: user #//only admin can create, update, or destroy articles
 
     return unless user && user.admin?
     can :manage, :all

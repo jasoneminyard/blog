@@ -10,7 +10,7 @@
             "request": "launch",
             "name": "Rails Blog Test",
             "program": "${workspaceFolder}",
-            "programArgs": ["rails test"],
+            "programArgs": ["rails test test/controllers/comments_controller_test.rb:18"],
             "useBundler": false
         }
         ///home/jmin69n/Dev/blog/test/controllers/comments_controller_test.rb
