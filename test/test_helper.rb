@@ -15,9 +15,4 @@ class ActiveSupport::TestCase
   fixtures :all
 
   # Add more helper methods to be used by all tests here...
-
-  def sign_up_and_login
-    post "/users", params: { "user"=>{"email"=>"test_guy_1@yahoo.com", "username"=>"Test Guy One",
-    "password"=>"123456", "password_confirmation"=>"123456", "commit"=>"Sign up" } }
-  end
 end

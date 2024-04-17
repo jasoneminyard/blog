@@ -4,8 +4,22 @@ one:
   commenter: MyString
   body: MyText
   article: one
+  user: one
 
 two:
   commenter: MyString
   body: MyText
   article: two
+  user: admin
+
+private:
+  commenter: MyString
+  body: MyText
+  article: private
+  user: admin
+
+archived:
+  commenter: MyString
+  body: MyText
+  article: archived  
+  user: one
