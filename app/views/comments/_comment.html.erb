@@ -1,21 +1,29 @@
-<% unless comment.archived? %>
-  <p>
-    <strong>Commenter:</strong>
-    <%= comment.commenter %>
-  </p>
 
-  <p>
-    <strong>Comment:</strong>
-    <%= comment.body %>
-  </p>
+<div class= "container">
+  <uol class="list-group">
+    <% unless comment.archived? %>
+      <li class=”list-group-item list-group-item-action”>
+        <p>
+          <strong>Commenter:</strong>
+          <%= comment.commenter %>
+        </p>
 
-  <% if current_user && current_user.username == comment.article.author %>
-    <p>
-      <%= link_to "Destroy Comment", [comment.article, comment], data: {
-                    turbo_method: :delete,
-                    turbo_confirm: "Are you sure?"
-                  }, class: "link-danger" %>
-    </p>
-  <% end %>
-<% end %>
+        <p>
+          <strong>Comment:</strong>
+          <%= comment.body %>
+        </p>
+
+        <% if can? :destroy, @comment %>
+          <p>
+            <%= link_to "Destroy Comment", [comment.article, comment], data: {
+                          turbo_method: :delete,
+                          turbo_confirm: "Are you sure?"
+                        }, class: "link-danger" %>
+          </p>
+        <% end %>
+      </li>
+    <% end %>
+  </uol>
+</div>
+
 

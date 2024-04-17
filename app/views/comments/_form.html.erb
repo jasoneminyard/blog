@@ -16,6 +16,10 @@
     </div>
 
     <div>
+      <%= form.hidden_field :user_id, value: current_user.id %>
+    </div>
+
+    <div>
       <%= form.submit(class: "btn btn-primary blog-form-btn ") %>
     </div>
 

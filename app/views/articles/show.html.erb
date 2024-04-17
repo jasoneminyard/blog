@@ -8,7 +8,7 @@
   Author
   <h6><%= @article.author %></h6>
 </div>
-<% if user_signed_in? %>
+<% if can? :edit, @article %>
   <ul>
     <li><%= link_to "Edit Post", edit_article_path(@article) %></li>
     <li><%= link_to "Delete Post", article_path(@article), data: {
