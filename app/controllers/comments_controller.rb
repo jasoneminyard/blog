@@ -7,7 +7,7 @@ class CommentsController < ApplicationController
     if @comment = @article.comments.create(comment_params)
       flash[:notice] = "Comment was successfully created."
     else
-      flash[:notice] = "Comment was NOT created."
+      flash[:warning] = "Comment was NOT created."
     end
     
     redirect_to article_path(@article)
@@ -16,7 +16,12 @@ class CommentsController < ApplicationController
   def destroy
     @article = Article.find(params[:article_id])
     @comment = @article.comments.find(params[:id])
-    @comment.destroy
+    if @comment.destroy
+      flash[:notice] = "Comment was successfully deleted."
+    else
+      flash[:warning] = "Comment was NOT deleted."
+    end
+
     redirect_to article_path(@article), status: :see_other
   end
 
