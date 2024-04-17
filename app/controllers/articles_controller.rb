@@ -3,7 +3,6 @@ class ArticlesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
-    #@articles = Article.all
     @count = Article.public_count
     if @count ==1
       @article = "article"
@@ -40,7 +39,6 @@ class ArticlesController < ApplicationController
     if @article.update(article_params)
       redirect_to @article
     else
-      puts @article.errors.full_messages
       render :edit, status: :unprocessable_entity
     end
   end
