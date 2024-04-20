@@ -7,7 +7,7 @@
   <% @articles.each do |article| %>
     <% unless article.archived? %>
       <li class=”list-group-item list-group-item-action”>
-        <%= link_to article.title, article %>
+        <%= link_to article.title, article, class: "blog-a" %>
         <% comment_comments = (article.comments.count == 1 ? "comment" : "comments") %>
         <span class="badge bg-primary rounded-pill"><%= article.comments.count %> <%= comment_comments %></span>
       </li>
