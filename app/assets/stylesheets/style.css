@@ -1,7 +1,16 @@
 /* stylelint-disable selector-list-comma-newline-after */
 
+.blog-a {
+  color: white;
+}
+
+.blog-a:hover {
+  color: rgb(224, 224, 224);
+}
+
 .blog-body {
   background-color: rgb(56, 68, 182);
+  color: white;
 }
 
 .blog-btn-group-vertical {
