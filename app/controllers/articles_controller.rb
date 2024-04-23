@@ -37,6 +37,7 @@ class ArticlesController < ApplicationController
   def update
     @article = Article.find(params[:id])
     if @article.update(article_params)
+      flash[:notice] = "Article was successfully updated."
       redirect_to @article
     else
       render :edit, status: :unprocessable_entity
@@ -45,8 +46,11 @@ class ArticlesController < ApplicationController
  
   def destroy
     @article = Article.find(params[:id])
-    @article.destroy
-
+    if @article.destroy
+      flash[:notice] = "Article was successfully deleted."
+    else
+      flash[:notice] = "Article was NOT deleted."
+    end
     redirect_to root_path, status: :see_other
   end
 
