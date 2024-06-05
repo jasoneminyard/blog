@@ -23,8 +23,6 @@ default: &default
 development:
   <<: *default
   database: blog_development
-  #username: jmin69n
-  #password: jm2650
   username: <%= ENV["BLOG_DEVELOPMENT_DATABASE_USERNAME"] %>
   password: <%= ENV["BLOG_DEVELOPMENT_DATABASE_PASSWORD"] %>
 
